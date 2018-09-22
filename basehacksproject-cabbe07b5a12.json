@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "basehacksproject",
+  "private_key_id": "cabbe07b5a127b2816ae8a7a2ba218fb52c1accf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC2K7sheTF3DQZ6\nDcibCsNUAzctJDS7Bb8ivjHtm2vFiFB5/GAaNZ0wY1rgQxyx0OZVmXubvjVwtqv4\nh5FeX68RL9Uc4njGHy4zehlRNDjtkjzTO7IPS/OeHcBcrqMII9mdc23mjag0kLGX\nUWRRs9XEJNaw78tfmNqUMnsRcRTu9D+v7pSSuXBv71eSmHztz0wPMazRcQeANgsC\ngpBPL99zsFL++K0e7o8zNtwkyovxDPR5BMsayWcCbtJKQVu74TwNe48ezuTL8Sim\nRYhsPHJj8VzThgtNONTyZcyKIy/mklAnPjyb2HVx3vGbccE0mKpsltCVRnsLB6XW\ncQmRIctxAgMBAAECggEACinD6aDph88H+Li6o5202oPIaQIPWAzAxlcukWc9mrpZ\nZQjVsrihgaDVYdQUrn3tT8K9kOmKcTSbwQSNMWLssSyGOvOOkd0M9o2+Clf7whNJ\nxe4bZ7uQxpY51GHg0hQv8JcPP1DRXMdixQKjMmSyTRxSBvKF2do8/Y4YbBdvN8p7\nz72S6KMNy10vbJiYLEmxQBZVXaezZ3X4cwWsYK2yfR6vvcTeo+V/jzbeMELgY3yC\nYVWaes36kfDsizn1On8SbDmeTVRUOoOSNNsnvYTYKszUupSfss/1CG6XFZ7TymDP\nnwTQQwn5xGnjkj0uAg6pYR7A1vWZ/hjyqsjz6xxVgQKBgQD3BBd5fx+DBNpPBLlW\n/TgSzmvBUaYvKoMo19/yqHeEjxBIuX/UV997dBVAzI13dZRdvm3GrKg47Uh1+YcQ\nd4DfWCffjlOXZT7vOTudakP3B4LFd2FkDCK6LQg9lvflSYB0xfnuSnSXD3OL5s+W\njjkEPrLPcr2ezkKSjFGItzfxYQKBgQC8y+GQGGrl8yB2BhJ8pY8vvwIRYRXPzIJQ\nvdZrARbmw9hKg+JwXQsW2PSFybJdm3VgmV4xpnGaeYUPTbMIa+XEk0uzsvS1OuEn\nxOt9I4C9V5DhTd64w1Mio10RLzcGiuSpNQVFWTufV4DgR3EVtzfmwBO5UUZvWMxf\npPY7RG1EEQKBgQDNegXc9zZLUpoW6SMTjYg7fKJ+KWFIEuEP9KNBw4nIJwmwtT30\ncTRiCWo0gPOcz54fbOz8O1ukHx4LpQoJVJ9LKpXgjRBT+9CiRsWkaGUo9IJ/qJLH\nGqE4pYUZVp/Xh5DnklgZNK5PinbfhZxg7OXY9h7gGd5KX+FY7ohUZbSPgQKBgAsq\nc7i1+PyImI7iZQ2CLSnBvjmQ6F1V1w83awsBEX2sb4pYqnfCyPkc87lF6IqouxRv\nfaaqFWXxcfEpw0DoQLqTi5KhLt/ZD5/ugY7xHpgUKblphZaf1rbhuotdo397j3KC\ndEFZubD+19xr3UBPibrX+VKof+Xt9ohhlT6EGYJBAoGBAMqcQUfL3SIJGNggepJH\ngmVWaJSjOxW7yl9qgMKHXzquFx8F9VOp7tkzbCjeMoAQGHEUpC6g30I+OkrtJ79r\nNaPb+pUFwV3jQKH89CrydZP745L4V0sZCkdQInEQ0BxxEXurcSAMH5n/gD7K43eq\nIcEkV2rKpIiKyCHD9PTEjy5u\n-----END PRIVATE KEY-----\n",
+  "client_email": "starting-account-sjviy3wf7in9@basehacksproject.iam.gserviceaccount.com",
+  "client_id": "117500425384371666130",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/starting-account-sjviy3wf7in9%40basehacksproject.iam.gserviceaccount.com"
+}
