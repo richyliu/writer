@@ -20,17 +20,18 @@ export class ResultsComponent implements OnInit {
   ngOnInit() {
     // get the query, removing the ? (although documentation says unnecessary, still necessary
     const query = queryString.parse(document.location.search.slice(1));
+    const answers = query.answers || [];
     const responseText = query.text as string;
     this.imageText = responseText;
     console.log(query);
 
-    const res = this.processInput(responseText, query.answers);
+    const res = this.processInput(responseText, answers);
 
     this.displayTable = [];
-    for (let i = 0; i < query.answers.length; i++) {
+    for (let i = 0; i < answers.length; i++) {
       this.displayTable.push({
         userAnswer: res.input[i],
-        answer: query.answers[i],
+        answer: answers[i],
         correct: res.correct[i]
       });
     }
