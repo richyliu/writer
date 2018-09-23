@@ -1,4 +1,6 @@
 <p>
-  take-picture works!
+  Click upload picture in the popup
 </p>
-<button routerLink="/results">finish</button>
+<div [hidden]="hideUploadPicture">
+  <input type="file" (change)="uploadPicture($event)" accept="image/*">
+</div>

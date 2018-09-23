@@ -1,4 +1,5 @@
 <p>
-game works!
+  {{definition}}
 </p>
-<button routerLink="/take-picture">Next (after time's up)</button>
+<button (click)="nextWord()" [hidden]="!hideTakePicture">Next</button>
+<button routerLink="/take-picture" [hidden]="hideTakePicture">Take Picture</button>

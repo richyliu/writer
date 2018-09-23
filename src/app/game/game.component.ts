@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
+  definition: string = 'a person that wins something';
+  hideTakePicture: boolean = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  nextWord(): void {
+    this.definition = '';
+    this.hideTakePicture = false;
   }
 
 }
