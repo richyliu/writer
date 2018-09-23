@@ -3,8 +3,9 @@
     <div class="center">Results</div>
   </ons-toolbar>
   <div class="content">
-    <p>Correct: 0</p>
-    <p>Your text: {{imageText}}</p>
+    <p>Correct: {{numCorrect}}, {{numCorrect/displayTable.length * 100 | number}}%</p>
+    <p>Your text:</p>
+    <p class="code">{{imageText}}</p>
     <table>
       <tr *ngFor="let row of displayTable">
         <td>{{row.userAnswer}}</td>

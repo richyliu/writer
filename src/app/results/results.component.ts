@@ -13,6 +13,7 @@ export class ResultsComponent implements OnInit {
   imageText: string;
   // contains user's answers, correct answers, and correct boolean
   displayTable: object[];
+  numCorrect = 0;
 
   constructor() { }
 
@@ -59,6 +60,12 @@ export class ResultsComponent implements OnInit {
     input.splice(0, 1);
     input.splice(input.length - 1, 1);
 
+    input = input.map(a => {
+      a
+        .trim()
+        .toLowerCase();
+      return a.split(' ')[a.split(' ').length - 1];
+    });
 
     // goes through each item in the inputs and the answers, and
     // if they are the same, mark it as correct
@@ -66,12 +73,7 @@ export class ResultsComponent implements OnInit {
       correct.push(input[i] === real[i]);
     }
 
-    input = input.map(a => {
-      return a
-        .trim()
-        .split(' ')[a.length - 1]
-        .toLowerCase();
-    });
+    this.numCorrect = correct.filter(Boolean).length;
 
     return {
       input: input,
