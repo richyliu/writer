@@ -1,5 +1,8 @@
 <ons-page>
   <ons-toolbar>
+    <div class="left">
+      <ons-back-button (click)="location.back()">Back</ons-back-button>
+    </div>
     <div class="center">Intro to Game</div>
   </ons-toolbar>
   <div class="content">
@@ -9,7 +12,7 @@
     </p>
 
     <div style="margin: 10px">
-      <ons-select [(ngModel)]="subject">
+      <ons-select (change)="subjectChange($event)">
         <option *ngFor="let sub of subjects" [value]="sub">
           {{ sub }}
         </option>
@@ -18,7 +21,7 @@
 
     <ons-list>
       <ons-list-item>
-        <ons-button routerLink="/game" [queryParams]="{subject: subject}">Let's begin!</ons-button>
+        <ons-button (click)="redir()">Let's begin!</ons-button>
       </ons-list-item>
     </ons-list>
   </div>

@@ -13,6 +13,7 @@ import {DefinitionsService} from '../services/definitions.service';
 })
 export class GameComponent implements OnInit {
 
+  subject: string;
   definition: string;
   hideTakePicture = true;
   timeLeft: number;
@@ -27,14 +28,23 @@ export class GameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.definitionsService.reset();
+    this.subject = queryString.parse(document.location.search.slice(1)).subject;
+
+    this.definitionsService.reset(this.subject);
     this.nextWord();
     // set default time to 120 seconds
     this.timeLeft = this.totalTime;
+    this.timePercentage = 100;
 
+    // really accurate timer
+    const start = Date.now();
     this.timer = window.setInterval(() => {
-      this.timeLeft -= 0.01;
+      this.timeLeft = this.totalTime - (Date.now() - start) / 1000;
       this.timePercentage = this.timeLeft / this.totalTime * 100;
+
+      if (this.timeLeft < 0) {
+        this.showTakePictures(true);
+      }
     }, 10);
   }
 
@@ -44,12 +54,17 @@ export class GameComponent implements OnInit {
 
     // once definitions run out, unhide the take picture button
     if (!this.definition) {
-      this.hideTakePicture = false;
-      this.router.navigateByUrl('/take-picture?' + queryString.stringify({
-        definitions: this.definitionsService.getAllDefinitions(),
-        answers: this.definitionsService.getAllAnswers()
-      }));
+      this.showTakePictures(false);
     }
+  }
+
+  private showTakePictures(noTime: boolean) {
+    this.hideTakePicture = false;
+    this.router.navigateByUrl('/take-picture?' + queryString.stringify({
+      definitions: this.definitionsService.getAllDefinitions(),
+      answers: this.definitionsService.getAllAnswers(),
+      noTime: noTime ? 'true' : 'false'
+    }));
   }
 
 }

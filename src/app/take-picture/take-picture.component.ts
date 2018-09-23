@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 import * as queryString from 'querystring';
+import * as ons from 'onsenui';
 
 import {ImageRequestService} from '../services/image-request.service';
-import {Router} from '@angular/router';
 
 
 @Component({
@@ -21,6 +22,12 @@ export class TakePictureComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // show toast if user ran out of time
+    if (document.location.search.indexOf('noTime=true') >= 0) {
+      ons.notification.toast('You ran out of time! Take a picture of what you have', {
+        timeout: 2000
+      });
+    }
   }
 
   /**
