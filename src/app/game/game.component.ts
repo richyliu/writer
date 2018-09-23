@@ -59,6 +59,7 @@ export class GameComponent implements OnInit {
   }
 
   private showTakePictures(noTime: boolean) {
+    window.clearInterval(this.timer);
     this.hideTakePicture = false;
     this.router.navigateByUrl('/take-picture?' + queryString.stringify({
       definitions: this.definitionsService.getAllDefinitions(),

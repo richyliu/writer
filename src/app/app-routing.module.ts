@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'game', component: GameComponent},
   { path: 'take-picture', component: TakePictureComponent},
   { path: 'results', component: ResultsComponent},
-  { path: 'intro', component: IntroComponent }
+  { path: 'intro', component: IntroComponent },
+  { path: '**', redirectTo: '/welcome' }
 ]
 
 @NgModule({
