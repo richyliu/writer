@@ -22,6 +22,7 @@ export class TakePictureComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('take-picture ngOnInit');
     // show toast if user ran out of time
     if (document.location.search.indexOf('noTime=true') >= 0) {
       ons.notification.toast('You ran out of time! Take a picture of what you have', {
@@ -63,7 +64,6 @@ export class TakePictureComponent implements OnInit {
           const text = data.responses[0].fullTextAnnotation.text;
           this.loading = false;
 
-          console.log(document.location.search);
           // navigate to results with the text interpretation from google vision, pass current query along
           this.router.navigateByUrl(`/results${document.location.search}&${queryString.stringify({
             text: text

@@ -12,12 +12,13 @@ export class ResultsComponent implements OnInit {
 
   imageText: string;
   // contains user's answers, correct answers, and correct boolean
-  displayTable: object[];
+  displayTable: object[];z
   numCorrect = 0;
 
   constructor() { }
 
   ngOnInit() {
+    console.log('results ngOnInit');
     // get the query, removing the ? (although documentation says unnecessary, still necessary
     const query = queryString.parse(document.location.search.slice(1));
     const answers = query.answers || [];
