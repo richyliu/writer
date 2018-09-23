@@ -44,10 +44,10 @@ export class TakePictureComponent implements OnInit {
 
     this.loading = true;
 
-    loadImage.parseMetaData(file, data => {
+    loadImage.parseMetaData(file, metaData => {
       let orientation = 0;
-      if (data.exif) {
-        orientation = data.exif.get('Orientation');
+      if (metaData.exif) {
+        orientation = metaData.exif.get('Orientation');
       }
 
       const loadingImage = loadImage(file, canvas => {

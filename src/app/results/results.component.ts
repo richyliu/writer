@@ -70,7 +70,7 @@ export class ResultsComponent implements OnInit {
       const split = input[i].split(')');
       const numId = parseInt(split[0], 10);
       if (split[1]) {
-        parsedInput[numId - 1] = split[1].trim().toLowerCase();
+        parsedInput[numId - 1] = split[1].trim().toLowerCase().replace(/\s/g, '');
       }
     }
     for (let i = 0; i < parsedInput.length; i++) {
