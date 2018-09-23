@@ -12,7 +12,7 @@ import {ImageRequestService} from './services/image-request.service';
 export class AppComponent {
   title = 'writer';
 
-  constructor(private imageRequestService: ImageRequestService) {}
+  constructor() {}
 
 
 }
