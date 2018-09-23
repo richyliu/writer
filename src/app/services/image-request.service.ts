@@ -35,7 +35,7 @@ export class ImageRequestService {
           }
         }
       ]
-    }
+    };
 
     return this.http.post(this.requestUrl, req).pipe(
       catchError(e => {

@@ -7,6 +7,7 @@ import {TutorialComponent} from './tutorial/tutorial.component';
 import {GameComponent} from './game/game.component';
 import {TakePictureComponent} from './take-picture/take-picture.component';
 import {ResultsComponent} from './results/results.component';
+import {IntroComponent} from './intro/intro.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'game', component: GameComponent},
   { path: 'take-picture', component: TakePictureComponent},
   { path: 'results', component: ResultsComponent},
+  { path: 'intro', component: IntroComponent }
 ]
 
 @NgModule({

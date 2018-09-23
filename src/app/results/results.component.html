@@ -1,7 +1,19 @@
-<p>
-  Your text:
-</p>
-<p>
-  {{imageText}}
-</p>
-<button routerLink="/welcome">Again!</button>
+<ons-page>
+  <ons-toolbar>
+    <div class="center">Results</div>
+  </ons-toolbar>
+  <div class="content">
+    <p>Correct: 0</p>
+    <p>Your text: {{imageText}}</p>
+    <table>
+      <tr *ngFor="let row of displayTable">
+        <td>{{row.userAnswer}}</td>
+        <td>{{row.answer}}</td>
+        <td>{{row.correct}}</td>
+      </tr>
+    </table>
+
+
+    <ons-button routerLink="/welcome">Again!</ons-button>
+  </div>
+</ons-page>

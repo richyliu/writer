@@ -3,15 +3,15 @@
     <div class="center">Game</div>
   </ons-toolbar>
   <div class="content">
-    <ons-card>
-      <p>
-        {{definition}}
-      </p>
-      <ons-button (click)="nextWord()" *ngIf="!hideTakePicture">Next</ons-button>
-    </ons-card>
-
-    <ons-list>
-      <ons-list-item modifier="chevron" tappable routerLink="/take-picture" *ngIf="hideTakePicture">Take Picture</ons-list-item>
-    </ons-list>
+    <div *ngIf="hideTakePicture" class="game">
+      <ons-card>
+        <p>
+          {{definition}}
+        </p>
+      </ons-card>
+      <div class="next-wrapper">
+        <ons-button (click)="nextWord()" modifier="large" class="next">Next</ons-button>
+      </div>
+    </div>
   </div>
 </ons-page>

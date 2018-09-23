@@ -12,6 +12,7 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { GameComponent } from './game/game.component';
 import { TakePictureComponent } from './take-picture/take-picture.component';
 import { ResultsComponent } from './results/results.component';
+import { IntroComponent } from './intro/intro.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ResultsComponent } from './results/results.component';
     TutorialComponent,
     GameComponent,
     TakePictureComponent,
-    ResultsComponent
+    ResultsComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,

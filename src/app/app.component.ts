@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import {ImageRequestService} from './services/image-request.service';
 
 
 

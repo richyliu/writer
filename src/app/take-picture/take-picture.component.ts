@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as queryString from 'querystring';
 
 import {ImageRequestService} from '../services/image-request.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,8 @@ import {ImageRequestService} from '../services/image-request.service';
 export class TakePictureComponent implements OnInit {
 
   constructor(
-    private imageRequestService: ImageRequestService
+    private imageRequestService: ImageRequestService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,23 +35,63 @@ export class TakePictureComponent implements OnInit {
     // read image data in b64
     const fileReader = new FileReader();
     fileReader.onload = e => {
-      let b64 = fileReader.result;
-      // change to RFC 4648 "Base 64 Encoding with URL and Filename Safe Alphabet"
-      b64 = b64.replace(/\+/g, '-').replace(/\//g, '_');
-      // remove "data:image_jpeg;base64,"
-      b64 = b64.slice(23);
+      // base 64 of image
+      const b64 = fileReader.result;
+      const imgObj = new Image();
 
-      console.log(b64);
+      imgObj.addEventListener('load', () => {
+        // TODO: using grayscale?
+        // grayscale base 64 image
+        let gray64 = this.gray(imgObj);
+        // let gray64 = b64;
 
-      this.imageRequestService.request(b64).subscribe(data => {
-        const text = data.responses[0].fullTextAnnotation.text;
+        // change to RFC 4648 "Base 64 Encoding with URL and Filename Safe Alphabet"
+        gray64 = gray64.replace(/\+/g, '-').replace(/\//g, '_');
+        // remove "data:image_jpeg;base64,"
+        gray64 = gray64.slice(23);
 
-        document.location.href = '/results?' + queryString.stringify({
-          text: text
+        // google vision api request with base64 image
+        this.imageRequestService.request(gray64).subscribe(data => {
+          // get the text from the json
+          const text = data.responses[0].fullTextAnnotation.text;
+
+          // navigate to results with the text interpretation from google vision, pass current query along
+          this.router.navigateByUrl(`/results${document.location.search}&${queryString.stringify({
+            text: text
+          })}`);
         });
       });
+      imgObj.src = b64;
     };
     fileReader.readAsDataURL(file);
   }
 
+
+  // grayscale helper function written by Eric
+  private gray(imgObj): string {
+    console.log(imgObj);
+    const canvas = document.createElement('canvas');
+    const canvasContext = canvas.getContext('2d');
+
+    const imgW = imgObj.width;
+    console.log('W:' + imgW);
+    const imgH = imgObj.height;
+    canvas.width = imgW;
+    canvas.height = imgH;
+
+    canvasContext.drawImage(imgObj, 0, 0);
+    const imgPixels = canvasContext.getImageData(0, 0, imgW, imgH);
+
+    for (let y = 0; y < imgPixels.height; y++) {
+      for (let x = 0; x < imgPixels.width; x++) {
+        const i = (y * 4) * imgPixels.width + x * 4;
+        const avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;
+        imgPixels.data[i] = avg;
+        imgPixels.data[i + 1] = avg;
+        imgPixels.data[i + 2] = avg;
+      }
+    }
+    canvasContext.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);
+    return canvas.toDataURL('image/jpeg');
+  }
 }
