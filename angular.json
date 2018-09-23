@@ -27,7 +27,9 @@
               "node_modules/onsenui/css/onsen-css-components.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/load-image.all.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -78,7 +80,9 @@
               "node_modules/onsenui/css/onsen-css-components.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/load-image.all.min.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

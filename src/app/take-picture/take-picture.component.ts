@@ -33,17 +33,18 @@ export class TakePictureComponent implements OnInit {
     const file = files[0];
 
     // read image data in b64
-    const fileReader = new FileReader();
-    fileReader.onload = e => {
-      // base 64 of image
-      const b64 = fileReader.result;
-      const imgObj = new Image();
+    // const fileReader = new FileReader();
 
-      imgObj.addEventListener('load', () => {
-        // TODO: using grayscale?
-        // grayscale base 64 image
-        let gray64 = this.gray(imgObj);
-        // let gray64 = b64;
+    loadImage.parseMetaData(file, data => {
+      let orientation = 0;
+      if (data.exif) {
+        orientation = data.exif.get('Orientation');
+      }
+
+      console.log('out', this);
+      const loadingImage = loadImage(file, canvas => {
+        console.log('in', this);
+        let gray64 = this.gray(canvas);
 
         // change to RFC 4648 "Base 64 Encoding with URL and Filename Safe Alphabet"
         gray64 = gray64.replace(/\+/g, '-').replace(/\//g, '_');
@@ -60,26 +61,18 @@ export class TakePictureComponent implements OnInit {
             text: text
           })}`);
         });
-      });
-      imgObj.src = b64;
-    };
-    fileReader.readAsDataURL(file);
+      }, {canvas: true, orientation: orientation});
+    });
   }
 
 
   // grayscale helper function written by Eric
-  private gray(imgObj): string {
-    console.log(imgObj);
-    const canvas = document.createElement('canvas');
+  private gray(canvas: HTMLCanvasElement): string {
     const canvasContext = canvas.getContext('2d');
 
-    const imgW = imgObj.width;
-    console.log('W:' + imgW);
-    const imgH = imgObj.height;
-    canvas.width = imgW;
-    canvas.height = imgH;
+    const imgW = canvas.width;
+    const imgH = canvas.height;
 
-    canvasContext.drawImage(imgObj, 0, 0);
     const imgPixels = canvasContext.getImageData(0, 0, imgW, imgH);
 
     for (let y = 0; y < imgPixels.height; y++) {

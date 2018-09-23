@@ -31,7 +31,7 @@ export class ImageRequestService {
             }
           ],
           'imageContext': {
-            'languageHints': ['en-t-i0-handwrit']
+            // 'languageHints': ['en-t-i0-handwrit']
           }
         }
       ]

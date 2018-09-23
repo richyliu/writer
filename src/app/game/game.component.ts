@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {DefinitionsService} from '../services/definitions.service';
 import {Router} from '@angular/router';
+
 import * as queryString from 'querystring';
+
+import {DefinitionsService} from '../services/definitions.service';
+
 
 @Component({
   selector: 'app-game',
@@ -12,6 +15,11 @@ export class GameComponent implements OnInit {
 
   definition: string;
   hideTakePicture = true;
+  timeLeft: number;
+  totalTime = 120;
+  timePercentage: number;
+  // Interval timer
+  timer: number;
 
   constructor(
     private definitionsService: DefinitionsService,
@@ -21,6 +29,13 @@ export class GameComponent implements OnInit {
   ngOnInit() {
     this.definitionsService.reset();
     this.nextWord();
+    // set default time to 120 seconds
+    this.timeLeft = this.totalTime;
+
+    this.timer = window.setInterval(() => {
+      this.timeLeft -= 0.01;
+      this.timePercentage = this.timeLeft / this.totalTime * 100;
+    }, 10);
   }
 
 
