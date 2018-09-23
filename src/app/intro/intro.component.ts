@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntroComponent implements OnInit {
 
+  subjects = ['Math', 'Science', 'English', 'Spanish'];
+  subject: string;
+
   constructor() { }
 
   ngOnInit() {

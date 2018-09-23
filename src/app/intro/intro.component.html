@@ -4,6 +4,26 @@
   </ons-toolbar>
   <div class="content">
 
-    <ons-button routerLink="/game">Let's begin!</ons-button>
+    <p>
+      Choose which subject you want for the quiz
+    </p>
+
+    <div style="margin: 10px">
+      <ons-select [(ngModel)]="subject">
+        <option *ngFor="let subject of subjects" [value]="subject">
+          {{ subject }}
+        </option>
+      </ons-select>
+    </div>
+
+    <ons-list>
+      <ons-list-item>
+        <ons-button routerLink = "/tutorial"> Want to review the tutorial? </ons-button>
+      </ons-list-item>
+
+      <ons-list-item>
+        <ons-button routerLink="/game">Let's begin!</ons-button>
+      </ons-list-item>
+    </ons-list>
   </div>
 </ons-page>
