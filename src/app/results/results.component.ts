@@ -44,40 +44,50 @@ export class ResultsComponent implements OnInit {
   processInput(parseText, real): any {
     const correct = [];
 
+    // sometimes 1) becomes O
+    if (parseText[0] === 'O') {
+      parseText = '1)' + parseText.slice(1);
+    }
 
     // goes through the input strings and takes out the numbers
     // and parentheses that represent the beginning of the
     // problem
-    let string = '\n';
-    for (let i = 0; i < parseText.length; i++) {
-      if ((parseText.charAt(i) < '1' || parseText.charAt(i) > '9') && parseText.charAt(i) !=+ ')') {
-        string += parseText.charAt(i);
-      }
-    }
+    // let string = '\n';
+    // for (let i = 0; i < parseText.length; i++) {
+    //   if ((parseText.charAt(i) < '1' || parseText.charAt(i) > '9') && parseText.charAt(i) !== ')') {
+    //     string += parseText.charAt(i);
+    //   }
+    // }
+    const string = parseText;
 
     // splits the string into a list of the individual inputs of
     // the user
-    let input = string.split('\n');
-    input.splice(0, 1);
-    input.splice(input.length - 1, 1);
+    const input = string.split('\n');
+    const parsedInput = Array(real.length);
 
-    input = input.map(a => {
-      a = a
-        .trim()
-        .toLowerCase();
-      return a.split(' ')[a.split(' ').length - 1];
-    });
+    for (let i = 0; i < input.length; i++) {
+      const split = input[i].split(')');
+      const numId = parseInt(split[0], 10);
+      if (split[1]) {
+        parsedInput[numId - 1] = split[1].trim().toLowerCase();
+      }
+    }
+    for (let i = 0; i < parsedInput.length; i++) {
+      if (!parsedInput[i]) {
+        parsedInput[i] = '';
+      }
+    }
 
     // goes through each item in the inputs and the answers, and
     // if they are the same, mark it as correct
-    for (let i = 0; i < real.length; i++) {
-      correct.push(input[i] === real[i].toLowerCase());
+    for (let i = 0; i < real  .length; i++) {
+      correct.push(parsedInput[i] === real[i].toLowerCase());
     }
 
     this.numCorrect = correct.filter(Boolean).length;
 
     return {
-      input: input,
+      input: parsedInput,
       correct: correct
     };
   }
