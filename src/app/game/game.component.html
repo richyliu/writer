@@ -1,5 +1,17 @@
-<p>
-  {{definition}}
-</p>
-<button (click)="nextWord()" [hidden]="!hideTakePicture">Next</button>
-<button routerLink="/take-picture" [hidden]="hideTakePicture">Take Picture</button>
+<ons-page>
+  <ons-toolbar>
+    <div class="center">Game</div>
+  </ons-toolbar>
+  <div class="content">
+    <ons-card>
+      <p>
+        {{definition}}
+      </p>
+      <ons-button (click)="nextWord()" *ngIf="!hideTakePicture">Next</ons-button>
+    </ons-card>
+
+    <ons-list>
+      <ons-list-item modifier="chevron" tappable routerLink="/take-picture" *ngIf="hideTakePicture">Take Picture</ons-list-item>
+    </ons-list>
+  </div>
+</ons-page>

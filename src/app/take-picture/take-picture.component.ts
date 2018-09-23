@@ -12,8 +12,6 @@ import {ImageRequestService} from '../services/image-request.service';
 })
 export class TakePictureComponent implements OnInit {
 
-  hideUploadPicture = false;
-
   constructor(
     private imageRequestService: ImageRequestService
   ) { }
