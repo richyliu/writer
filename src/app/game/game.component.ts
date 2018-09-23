@@ -25,27 +25,30 @@ export class GameComponent implements OnInit {
   constructor(
     private definitionsService: DefinitionsService,
     private router: Router
-  ) { }
+  ) {
+    this.timePercentage = 100;
+  }
 
   ngOnInit() {
-    this.subject = queryString.parse(document.location.search.slice(1)).subject;
+    this.subject = queryString.parse(document.location.search.slice(1)).subject as string;
 
-    this.definitionsService.reset(this.subject);
-    this.nextWord();
-    // set default time to 120 seconds
-    this.timeLeft = this.totalTime;
-    this.timePercentage = 100;
+    this.definitionsService.reset(this.subject, () => {
+      this.nextWord();
+      // set default time to 120 seconds
+      this.timeLeft = this.totalTime;
+      this.timePercentage = 100;
 
-    // really accurate timer
-    const start = Date.now();
-    this.timer = window.setInterval(() => {
-      this.timeLeft = this.totalTime - (Date.now() - start) / 1000;
-      this.timePercentage = this.timeLeft / this.totalTime * 100;
+      // really accurate timer
+      const start = Date.now();
+      this.timer = window.setInterval(() => {
+        this.timeLeft = this.totalTime - (Date.now() - start) / 1000;
+        this.timePercentage = this.timeLeft / this.totalTime * 100;
 
-      if (this.timeLeft < 0) {
-        this.showTakePictures(true);
-      }
-    }, 10);
+        if (this.timeLeft < 0) {
+          this.showTakePictures(true);
+        }
+      }, 10);
+    });
   }
 
 

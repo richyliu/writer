@@ -3,17 +3,25 @@
     <div class="center">Results</div>
   </ons-toolbar>
   <div class="content">
-    <p>Correct: {{numCorrect}}, {{numCorrect/displayTable.length * 100 | number}}%</p>
+    <p>Correct: {{numCorrect}}/{{displayTable.length}}, {{numCorrect/displayTable.length * 100 | number:'1.1-1'}}%</p>
     <p>Your text:</p>
     <p class="code">{{imageText}}</p>
-    <table>
-      <tr *ngFor="let row of displayTable">
-        <td>{{row.userAnswer}}</td>
-        <td>{{row.answer}}</td>
-        <td>{{row.correct}}</td>
-      </tr>
-    </table>
-
+    <ons-list-header>
+      <ons-row>
+        <ons-col>Your answer</ons-col>
+        <ons-col>Correct</ons-col>
+        <ons-col>Right?</ons-col>
+      </ons-row>
+    </ons-list-header>
+    <ons-list>
+      <ons-list-item *ngFor="let row of displayTable">
+        <ons-row>
+          <ons-col>{{row.userAnswer}}</ons-col>
+          <ons-col>{{row.answer}}</ons-col>
+          <ons-col>{{row.correct}}</ons-col>
+        </ons-row>
+      </ons-list-item>
+    </ons-list>
 
     <ons-button routerLink="/welcome">Again!</ons-button>
   </div>

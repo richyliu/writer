@@ -1,11 +1,9 @@
 DirectoryIndex index.html
 
-<IfModule mod_rewrite.c>
-  RewriteEngine On
+RewriteEngine On
 
-  RewriteRule ^index\.html$ - [L,NC]
+RewriteRule ^index\.html$ - [L,NC]
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . index.html [L]
-</IfModule>
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.html [L]

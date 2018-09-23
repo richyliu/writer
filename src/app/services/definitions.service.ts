@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import satvocab from './satvocab';
-import mathquestions from './math-questions';
-import spanish from './spanish';
-import science from './science';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,44 +12,19 @@ export class DefinitionsService {
   private numWords = 10;
   private current = 0;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  reset(subject: string) {
-    switch (subject) {
-      case 'Math':
-        [this.answers, this.definitions] = this.selectQA(mathquestions);
-        break;
-      case 'Science':
-        [this.answers, this.definitions] = this.selectQA(science);
-        break;
-      case 'English':
-        [this.answers, this.definitions] = this.selectQA(satvocab);
-        break;
-      case 'Spanish':
-        [this.answers, this.definitions] = this.selectQA(spanish);
-        break;
-      default:
-        console.log('cannot be this?');
-        // do nothing
-    }
-    this.current = 0;
+  reset(subject: string, callback: () => void) {
+    this.http.get(`https://basehacksproject.firebaseio.com/${subject}.json`).subscribe(data => {
+      this.answers = Object.keys(data);
+      this.answers = this.answers
+        .sort(() => Math.random() - 0.5)
+        .slice(0, Math.min(this.numWords, this.answers.length));
+      this.definitions = this.answers.map(a => data[a]);
+      this.current = 0;
 
-    console.log(this.answers);
-    console.log(this.definitions);
-  }
-
-  /**
-   * Select a random subset of combined to be displayed as questions and answers
-   * @param combined  Object with answer as key and question as value
-   * @return          [answers, definitions]
-   */
-  private selectQA(combined): [string[], string[]] {
-    let answers = Object.keys(combined);
-    answers = answers
-      .sort(() => Math.random() - 0.5)
-      .slice(0, Math.min(this.numWords, answers.length));
-    const definitions = answers.map(a => combined[a]);
-    return [answers, definitions];
+      callback();
+    });
   }
 
   getNext(): string {

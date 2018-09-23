@@ -63,6 +63,7 @@ export class TakePictureComponent implements OnInit {
           const text = data.responses[0].fullTextAnnotation.text;
           this.loading = false;
 
+          console.log(document.location.search);
           // navigate to results with the text interpretation from google vision, pass current query along
           this.router.navigateByUrl(`/results${document.location.search}&${queryString.stringify({
             text: text
