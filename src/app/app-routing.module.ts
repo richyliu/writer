@@ -10,7 +10,7 @@ import {ResultsComponent} from './results/results.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' }
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent },
   { path: 'tutorial', component: TutorialComponent},
   { path: 'game', component: GameComponent},
