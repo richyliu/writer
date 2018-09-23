@@ -61,7 +61,7 @@ export class ResultsComponent implements OnInit {
     input.splice(input.length - 1, 1);
 
     input = input.map(a => {
-      a
+      a = a
         .trim()
         .toLowerCase();
       return a.split(' ')[a.split(' ').length - 1];
@@ -70,7 +70,7 @@ export class ResultsComponent implements OnInit {
     // goes through each item in the inputs and the answers, and
     // if they are the same, mark it as correct
     for (let i = 0; i < real.length; i++) {
-      correct.push(input[i] === real[i]);
+      correct.push(input[i] === real[i].toLowerCase());
     }
 
     this.numCorrect = correct.filter(Boolean).length;

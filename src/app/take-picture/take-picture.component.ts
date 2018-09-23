@@ -13,6 +13,8 @@ import {Router} from '@angular/router';
 })
 export class TakePictureComponent implements OnInit {
 
+  loading = false;
+
   constructor(
     private imageRequestService: ImageRequestService,
     private router: Router
@@ -32,8 +34,7 @@ export class TakePictureComponent implements OnInit {
     const files: FileList = target.files;
     const file = files[0];
 
-    // read image data in b64
-    // const fileReader = new FileReader();
+    this.loading = true;
 
     loadImage.parseMetaData(file, data => {
       let orientation = 0;
@@ -41,9 +42,7 @@ export class TakePictureComponent implements OnInit {
         orientation = data.exif.get('Orientation');
       }
 
-      console.log('out', this);
       const loadingImage = loadImage(file, canvas => {
-        console.log('in', this);
         let gray64 = this.gray(canvas);
 
         // change to RFC 4648 "Base 64 Encoding with URL and Filename Safe Alphabet"
@@ -55,6 +54,7 @@ export class TakePictureComponent implements OnInit {
         this.imageRequestService.request(gray64).subscribe(data => {
           // get the text from the json
           const text = data.responses[0].fullTextAnnotation.text;
+          this.loading = false;
 
           // navigate to results with the text interpretation from google vision, pass current query along
           this.router.navigateByUrl(`/results${document.location.search}&${queryString.stringify({

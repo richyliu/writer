@@ -3,6 +3,7 @@
     <div class="center">Take a picture!</div>
   </ons-toolbar>
   <div class="content">
+    <ons-progress-bar *ngIf="loading" indeterminate></ons-progress-bar>
     <ons-list>
       <ons-list-header>Instructions</ons-list-header>
       <ons-list-item>
