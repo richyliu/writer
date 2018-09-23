@@ -33,9 +33,9 @@ export class GameComponent implements OnInit {
     this.timeLeft = this.totalTime;
 
     this.timer = window.setInterval(() => {
-      this.timeLeft -= 0.1;
+      this.timeLeft -= 0.01;
       this.timePercentage = this.timeLeft / this.totalTime * 100;
-    }, 100);
+    }, 10);
   }
 
 
