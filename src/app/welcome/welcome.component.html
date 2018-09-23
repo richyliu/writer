@@ -7,14 +7,18 @@
       <ons-list-header>About</ons-list-header>
       <ons-list-item>Writlet is an application focused around teaching students how to best
         retain information. Our inspiration for this project originates from flaws
-        we have found in the popular application 'Quizlet'</ons-list-item>
-
-      <ons-list-item>
-        Please click the start button for a tutorial!
+        we have found in the popular application 'Quizlet'
       </ons-list-item>
 
-      <ons-list-header>Links</ons-list-header>
-      <ons-list-item modifier="chevron" tappable routerLink="/tutorial">Start</ons-list-item>
+      <ons-list>
+        <ons-list-item>
+          <ons-button routerLink = "/tutorial"> Want to review the tutorial? </ons-button>
+        </ons-list-item>
+
+        <ons-list-item>
+          <ons-button routerLink="/intro"> Take the Quiz! </ons-button>
+        </ons-list-item>
+      </ons-list>
     </ons-list>
   </div>
 </ons-page>

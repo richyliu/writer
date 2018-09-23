@@ -89,7 +89,7 @@ module.exports = "/*! onsenui - v2.10.4 - 2018-07-20 */\n@charset \"UTF-8\";\n/*
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n.content {\n  padding: 0px 10px 0px 10px;\n}\n"
 
 /***/ }),
 
@@ -621,9 +621,9 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /nfs/events/hackathon100/writer/node_modules/onsenui/css/onsenui.css */"./node_modules/onsenui/css/onsenui.css");
-__webpack_require__(/*! /nfs/events/hackathon100/writer/node_modules/onsenui/css/onsen-css-components.css */"./node_modules/onsenui/css/onsen-css-components.css");
-module.exports = __webpack_require__(/*! /nfs/events/hackathon100/writer/src/styles.css */"./src/styles.css");
+__webpack_require__(/*! /nfs/events/hackathon100/WebstormProjects/writer/node_modules/onsenui/css/onsenui.css */"./node_modules/onsenui/css/onsenui.css");
+__webpack_require__(/*! /nfs/events/hackathon100/WebstormProjects/writer/node_modules/onsenui/css/onsen-css-components.css */"./node_modules/onsenui/css/onsen-css-components.css");
+module.exports = __webpack_require__(/*! /nfs/events/hackathon100/WebstormProjects/writer/src/styles.css */"./src/styles.css");
 
 
 /***/ })

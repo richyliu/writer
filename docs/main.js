@@ -40,12 +40,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game_game_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./game/game.component */ "./src/app/game/game.component.ts");
 /* harmony import */ var _take_picture_take_picture_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./take-picture/take-picture.component */ "./src/app/take-picture/take-picture.component.ts");
 /* harmony import */ var _results_results_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./results/results.component */ "./src/app/results/results.component.ts");
+/* harmony import */ var _intro_intro_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./intro/intro.component */ "./src/app/intro/intro.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -60,6 +62,7 @@ var routes = [
     { path: 'game', component: _game_game_component__WEBPACK_IMPORTED_MODULE_4__["GameComponent"] },
     { path: 'take-picture', component: _take_picture_take_picture_component__WEBPACK_IMPORTED_MODULE_5__["TakePictureComponent"] },
     { path: 'results', component: _results_results_component__WEBPACK_IMPORTED_MODULE_6__["ResultsComponent"] },
+    { path: 'intro', component: _intro_intro_component__WEBPACK_IMPORTED_MODULE_7__["IntroComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -165,12 +168,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game_game_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./game/game.component */ "./src/app/game/game.component.ts");
 /* harmony import */ var _take_picture_take_picture_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./take-picture/take-picture.component */ "./src/app/take-picture/take-picture.component.ts");
 /* harmony import */ var _results_results_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./results/results.component */ "./src/app/results/results.component.ts");
+/* harmony import */ var _intro_intro_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./intro/intro.component */ "./src/app/intro/intro.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -194,7 +199,8 @@ var AppModule = /** @class */ (function () {
                 _tutorial_tutorial_component__WEBPACK_IMPORTED_MODULE_7__["TutorialComponent"],
                 _game_game_component__WEBPACK_IMPORTED_MODULE_8__["GameComponent"],
                 _take_picture_take_picture_component__WEBPACK_IMPORTED_MODULE_9__["TakePictureComponent"],
-                _results_results_component__WEBPACK_IMPORTED_MODULE_10__["ResultsComponent"]
+                _results_results_component__WEBPACK_IMPORTED_MODULE_10__["ResultsComponent"],
+                _intro_intro_component__WEBPACK_IMPORTED_MODULE_11__["IntroComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -223,7 +229,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".game {\n  font-size: 30px;\n}\n\n.next {\n  position: relative;\n  font-size: 80px;\n  height: 200px;\n  width: 100%;\n  text-align: center;\n  line-height: 200px;\n}\n\n.next-wrapper {\n  position: absolute;\n  bottom: 0px;\n  left: 0px;\n  width: 100vw;\n}\n"
 
 /***/ }),
 
@@ -234,7 +240,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Game</div>\n  </ons-toolbar>\n  <div class=\"content\">\n    <ons-card>\n      <p>\n        {{definition}}\n      </p>\n      <ons-button (click)=\"nextWord()\" *ngIf=\"!hideTakePicture\">Next</ons-button>\n    </ons-card>\n\n    <ons-list>\n      <ons-list-item modifier=\"chevron\" tappable routerLink=\"/take-picture\" *ngIf=\"hideTakePicture\">Take Picture</ons-list-item>\n    </ons-list>\n  </div>\n</ons-page>\n"
+module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Game</div>\n  </ons-toolbar>\n  <div class=\"content\">\n    <div *ngIf=\"hideTakePicture\" class=\"game\">\n      <ons-card>\n        <p>\n          {{definition}}\n        </p>\n      </ons-card>\n      <div class=\"next-wrapper\">\n        <ons-button (click)=\"nextWord()\" modifier=\"large\" class=\"next\">Next</ons-button>\n      </div>\n    </div>\n  </div>\n</ons-page>\n"
 
 /***/ }),
 
@@ -249,6 +255,10 @@ module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Game</d
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameComponent", function() { return GameComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_definitions_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/definitions.service */ "./src/app/services/definitions.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! querystring */ "./node_modules/querystring/index.js");
+/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(querystring__WEBPACK_IMPORTED_MODULE_3__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -259,16 +269,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var GameComponent = /** @class */ (function () {
-    function GameComponent() {
-        this.definition = 'a person that wins something';
+    function GameComponent(definitionsService, router) {
+        this.definitionsService = definitionsService;
+        this.router = router;
         this.hideTakePicture = true;
     }
     GameComponent.prototype.ngOnInit = function () {
+        this.definitionsService.reset();
+        this.nextWord();
     };
     GameComponent.prototype.nextWord = function () {
-        this.definition = '';
-        this.hideTakePicture = false;
+        this.definition = this.definitionsService.getNext();
+        // once definitions run out, unhide the take picture button
+        if (!this.definition) {
+            this.hideTakePicture = false;
+            this.router.navigateByUrl('/take-picture?' + querystring__WEBPACK_IMPORTED_MODULE_3__["stringify"]({
+                definitions: this.definitionsService.getAllDefinitions(),
+                answers: this.definitionsService.getAllAnswers()
+            }));
+        }
     };
     GameComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -276,9 +299,74 @@ var GameComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./game.component.html */ "./src/app/game/game.component.html"),
             styles: [__webpack_require__(/*! ./game.component.css */ "./src/app/game/game.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_definitions_service__WEBPACK_IMPORTED_MODULE_1__["DefinitionsService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], GameComponent);
     return GameComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/intro/intro.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/intro/intro.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/intro/intro.component.html":
+/*!********************************************!*\
+  !*** ./src/app/intro/intro.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Intro to Game</div>\n  </ons-toolbar>\n  <div class=\"content\">\n\n    <p>\n      Choose which subject you want for the quiz\n    </p>\n\n    <div style=\"margin: 10px\">\n      <ons-select [(ngModel)]=\"subject\">\n        <option *ngFor=\"let subject of subjects\" [value]=\"subject\">\n          {{ subject }}\n        </option>\n      </ons-select>\n    </div>\n\n    <ons-list>\n      <ons-list-item>\n        <ons-button routerLink = \"/tutorial\"> Want to review the tutorial? </ons-button>\n      </ons-list-item>\n\n      <ons-list-item>\n        <ons-button routerLink=\"/game\">Let's begin!</ons-button>\n      </ons-list-item>\n    </ons-list>\n  </div>\n</ons-page>\n"
+
+/***/ }),
+
+/***/ "./src/app/intro/intro.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/intro/intro.component.ts ***!
+  \******************************************/
+/*! exports provided: IntroComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IntroComponent", function() { return IntroComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var IntroComponent = /** @class */ (function () {
+    function IntroComponent() {
+        this.subjects = ['Math', 'Science', 'English', 'Spanish'];
+    }
+    IntroComponent.prototype.ngOnInit = function () {
+    };
+    IntroComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-intro',
+            template: __webpack_require__(/*! ./intro.component.html */ "./src/app/intro/intro.component.html"),
+            styles: [__webpack_require__(/*! ./intro.component.css */ "./src/app/intro/intro.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], IntroComponent);
+    return IntroComponent;
 }());
 
 
@@ -303,7 +391,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  Your text:\n</p>\n<p>\n  {{imageText}}\n</p>\n<button routerLink=\"/welcome\">Again!</button>\n"
+module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Results</div>\n  </ons-toolbar>\n  <div class=\"content\">\n    <p>Correct: 0</p>\n    <p>Your text: {{imageText}}</p>\n    <table>\n      <tr *ngFor=\"let row of displayTable\">\n        <td>{{row.userAnswer}}</td>\n        <td>{{row.answer}}</td>\n        <td>{{row.correct}}</td>\n      </tr>\n    </table>\n\n\n    <ons-button routerLink=\"/welcome\">Again!</ons-button>\n  </div>\n</ons-page>\n"
 
 /***/ }),
 
@@ -337,7 +425,52 @@ var ResultsComponent = /** @class */ (function () {
     ResultsComponent.prototype.ngOnInit = function () {
         // get the query, removing the ? (although documentation says unnecessary, still necessary
         var query = querystring__WEBPACK_IMPORTED_MODULE_1__["parse"](document.location.search.slice(1));
-        this.imageText = query.text;
+        var responseText = query.text;
+        this.imageText = responseText;
+        console.log(query);
+        var res = this.processInput(responseText, query.answers);
+        this.displayTable = [];
+        for (var i = 0; i < query.answers.length; i++) {
+            this.displayTable.push({
+                userAnswer: res.input[i],
+                answer: query.answers[i],
+                correct: res.correct[i]
+            });
+        }
+    };
+    // written by suraj
+    // function that takes json text from user attempts and splits //data and returns a table
+    ResultsComponent.prototype.processInput = function (parseText, real) {
+        var correct = [];
+        // goes through the input strings and takes out the numbers
+        // and parentheses that represent the beginning of the
+        // problem
+        var string = '\n';
+        for (var i = 0; i < parseText.length; i++) {
+            if ((parseText.charAt(i) < '1' || parseText.charAt(i) > '9') && parseText.charAt(i) != +')') {
+                string += parseText.charAt(i);
+            }
+        }
+        // splits the string into a list of the individual inputs of
+        // the user
+        var input = string.split('\n');
+        input.splice(0, 1);
+        input.splice(input.length - 1, 1);
+        // goes through each item in the inputs and the answers, and
+        // if they are the same, mark it as correct
+        for (var i = 0; i < real.length; i++) {
+            correct.push(input[i] === real[i]);
+        }
+        input = input.map(function (a) {
+            return a
+                .trim()
+                .split(' ')[a.length - 1]
+                .toLowerCase();
+        });
+        return {
+            input: input,
+            correct: correct
+        };
     };
     ResultsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -348,6 +481,78 @@ var ResultsComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], ResultsComponent);
     return ResultsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/definitions.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/services/definitions.service.ts ***!
+  \*************************************************/
+/*! exports provided: DefinitionsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DefinitionsService", function() { return DefinitionsService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DefinitionsService = /** @class */ (function () {
+    function DefinitionsService() {
+        this.definitions = [
+            'The quality of being real and true instead of fake and contrived',
+            'Kind, generous',
+            'Thrilling, exciting, stimulating'
+        ];
+        this.answers = [
+            'authenticity',
+            'benevolent',
+            'galvanizing'
+        ];
+        this.current = 0;
+    }
+    DefinitionsService.prototype.reset = function () {
+        this.current = 0;
+    };
+    DefinitionsService.prototype.getNext = function () {
+        var ret = this.definitions[this.current];
+        this.current++;
+        return ret;
+    };
+    // get all the definitions that have been called by getNext
+    DefinitionsService.prototype.getAllDefinitions = function () {
+        var ret = [];
+        for (var i = 0; i < this.current - 1; i++) {
+            ret.push(this.definitions[i]);
+        }
+        return ret;
+    };
+    // get all the answers for the corresponding all definitions
+    DefinitionsService.prototype.getAllAnswers = function () {
+        var ret = [];
+        for (var i = 0; i < this.current - 1; i++) {
+            ret.push(this.answers[i]);
+        }
+        return ret;
+    };
+    DefinitionsService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], DefinitionsService);
+    return DefinitionsService;
 }());
 
 
@@ -444,7 +649,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Take a picture!</div>\n  </ons-toolbar>\n  <div class=\"content\">\n    <ons-list>\n      <ons-list-item>\n        Click \"choose file\" below then click \"take picture\" in the popup\n      </ons-list-item>\n      <ons-list-item>\n        <ons-input type=\"file\" (change)=\"uploadPicture($event)\" accept=\"image/*\"></ons-input>\n      </ons-list-item>\n    </ons-list>\n\n  </div>\n</ons-page>\n"
+module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Take a picture!</div>\n  </ons-toolbar>\n  <div class=\"content\">\n    <ons-list>\n      <ons-list-header>Instructions</ons-list-header>\n      <ons-list-item>\n        For the picture that you take, please make sure that the\n        text is horizontal. Flash is not required while taking the\n        picture, as our program will compensate.\n      </ons-list-item>\n    </ons-list>\n\n    <ons-list>\n      <ons-list-item>\n        Remember that pictures must:\n      </ons-list-item>\n\n      <ons-list-item>\n        1) Not be too close to the red margin of the paper\n      </ons-list-item>\n\n      <ons-list-item>\n        2) Have lines in the format '#) answer'\n      </ons-list-item>\n\n      <ons-list-item>\n        3) Must be angled directly above the paper\n      </ons-list-item>\n\n      <ons-list-item>\n        4) Have no spaces that seperate individual words\n      </ons-list-item>\n    </ons-list>\n\n    <ons-list>\n      <ons-list-header> Upload Picture </ons-list-header>\n      <ons-list-item>\n        Click \"choose file\" below then click \"take picture\" in the popup\n      </ons-list-item>\n      <ons-list-item>\n        <ons-input type=\"file\" (change)=\"uploadPicture($event)\" accept=\"image/*\"></ons-input>\n      </ons-list-item>\n    </ons-list>\n\n  </div>\n</ons-page>\n"
 
 /***/ }),
 
@@ -462,6 +667,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! querystring */ "./node_modules/querystring/index.js");
 /* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(querystring__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _services_image_request_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/image-request.service */ "./src/app/services/image-request.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -474,9 +680,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var TakePictureComponent = /** @class */ (function () {
-    function TakePictureComponent(imageRequestService) {
+    function TakePictureComponent(imageRequestService, router) {
         this.imageRequestService = imageRequestService;
+        this.router = router;
     }
     TakePictureComponent.prototype.ngOnInit = function () {
     };
@@ -494,20 +702,55 @@ var TakePictureComponent = /** @class */ (function () {
         // read image data in b64
         var fileReader = new FileReader();
         fileReader.onload = function (e) {
+            // base 64 of image
             var b64 = fileReader.result;
-            // change to RFC 4648 "Base 64 Encoding with URL and Filename Safe Alphabet"
-            b64 = b64.replace(/\+/g, '-').replace(/\//g, '_');
-            // remove "data:image_jpeg;base64,"
-            b64 = b64.slice(23);
-            console.log(b64);
-            _this.imageRequestService.request(b64).subscribe(function (data) {
-                var text = data.responses[0].fullTextAnnotation.text;
-                document.location.href = '/results?' + querystring__WEBPACK_IMPORTED_MODULE_1__["stringify"]({
-                    text: text
+            var imgObj = new Image();
+            imgObj.addEventListener('load', function () {
+                // TODO: using grayscale?
+                // grayscale base 64 image
+                var gray64 = _this.gray(imgObj);
+                // let gray64 = b64;
+                // change to RFC 4648 "Base 64 Encoding with URL and Filename Safe Alphabet"
+                gray64 = gray64.replace(/\+/g, '-').replace(/\//g, '_');
+                // remove "data:image_jpeg;base64,"
+                gray64 = gray64.slice(23);
+                // google vision api request with base64 image
+                _this.imageRequestService.request(gray64).subscribe(function (data) {
+                    // get the text from the json
+                    var text = data.responses[0].fullTextAnnotation.text;
+                    // navigate to results with the text interpretation from google vision, pass current query along
+                    _this.router.navigateByUrl("/results" + document.location.search + "&" + querystring__WEBPACK_IMPORTED_MODULE_1__["stringify"]({
+                        text: text
+                    }));
                 });
             });
+            imgObj.src = b64;
         };
         fileReader.readAsDataURL(file);
+    };
+    // grayscale helper function written by Eric
+    TakePictureComponent.prototype.gray = function (imgObj) {
+        console.log(imgObj);
+        var canvas = document.createElement('canvas');
+        var canvasContext = canvas.getContext('2d');
+        var imgW = imgObj.width;
+        console.log('W:' + imgW);
+        var imgH = imgObj.height;
+        canvas.width = imgW;
+        canvas.height = imgH;
+        canvasContext.drawImage(imgObj, 0, 0);
+        var imgPixels = canvasContext.getImageData(0, 0, imgW, imgH);
+        for (var y = 0; y < imgPixels.height; y++) {
+            for (var x = 0; x < imgPixels.width; x++) {
+                var i = (y * 4) * imgPixels.width + x * 4;
+                var avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;
+                imgPixels.data[i] = avg;
+                imgPixels.data[i + 1] = avg;
+                imgPixels.data[i + 2] = avg;
+            }
+        }
+        canvasContext.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);
+        return canvas.toDataURL('image/jpeg');
     };
     TakePictureComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -515,7 +758,8 @@ var TakePictureComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./take-picture.component.html */ "./src/app/take-picture/take-picture.component.html"),
             styles: [__webpack_require__(/*! ./take-picture.component.css */ "./src/app/take-picture/take-picture.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_image_request_service__WEBPACK_IMPORTED_MODULE_2__["ImageRequestService"]])
+        __metadata("design:paramtypes", [_services_image_request_service__WEBPACK_IMPORTED_MODULE_2__["ImageRequestService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], TakePictureComponent);
     return TakePictureComponent;
 }());
@@ -531,7 +775,7 @@ var TakePictureComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "img {\n  width: 100%;\n}\n"
 
 /***/ }),
 
@@ -542,7 +786,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis posuere enim, eget sodales lectus interdum\n  vitae. Nunc eu ligula sed orci pretium mattis. Aliquam condimentum dui in diam vehicula laoreet. Nam libero massa,\n  interdum fermentum dui pretium, dictum viverra leo. Morbi viverra tellus nec urna ultricies cursus. Aliquam eleifend\n  molestie metus sed lacinia. Donec condimentum venenatis ullamcorper. Nam nec accumsan dolor, sit amet faucibus est.\n  Aenean lorem ipsum, pulvinar non fermentum vel, elementum et tellus. Etiam at sapien ornare metus scelerisque\n  pharetra. Fusce scelerisque ac sem et rhoncus. Vivamus venenatis vestibulum tincidunt.\n</p>\n<button routerLink=\"/game\">Ok</button>\n"
+module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Tutorial</div>\n  </ons-toolbar>\n  <div class=\"content\">\n    <ons-list>\n      <ons-list-header>Instructions</ons-list-header>\n      <ons-list-item>\n        For the picture that you take, please make sure that the\n        text is horizontal. Flash is not required while taking the\n        picture, as our program will compensate. Follow the\n        instructions below for the highest grading accuracy.\n      </ons-list-item>\n    </ons-list>\n\n    <ons-list>\n      <ons-list-header> Common Mistakes </ons-list-header>\n      <ons-list>\n        <ons-list-item>\n          Here's an image with a couple of mistakes. The errors\n          are listed with their corresponding number:\n        </ons-list-item>\n\n        <ons-list-item>\n          1) The space between the '1)' symbol and word is too large.\n        </ons-list-item>\n\n        <ons-list-item>\n        2) This answer completely fine.\n        </ons-list-item>\n\n        <ons-list-item>\n        3) The space between the word is too large.\n        Our grader may read it as two seperate words.\n        </ons-list-item>\n\n        <ons-list-item>\n        4) There is a '.' instead of a ')' symbol.\n        </ons-list-item>\n      </ons-list>\n    </ons-list>\n\n    <img src=\"../../assets/WriteletMistake1.png\">\n\n    <ons-list>\n      <ons-list-header> Taking the Picture </ons-list-header>\n      <ons-list>\n        <ons-list-item>\n          <b> A Good Picture </b>\n        </ons-list-item>\n\n        <img src=\"../../assets/GoodImage.jpg\">\n\n        <ons-list-item>\n          Notice how the image only has numbers with their\n          respective answers, and the lighting is relatively consistent.\n        </ons-list-item>\n      </ons-list>\n\n      <ons-list>\n        <ons-list-item>\n          <b> A Bad Picture #1 </b>\n        </ons-list-item>\n\n        <img src = \"../../assets/BadImage1.jpg\">\n\n        <ons-list-item>\n          This picture contains a lot of useless information\n          such as the image of another paper, the table, and\n          some black space at the bottom. Pictures should be\n          clear and concise.\n        </ons-list-item>\n      </ons-list>\n\n      <ons-list>\n        <ons-list-item>\n          <b> Bad Picture #2 </b>\n        </ons-list-item>\n\n        <img src = \"../../assets/BadImage2.jpg\">\n\n        <ons-list-item>\n          This picture is taken at a diagonal angle. This won't hinder\n          the Machine Learning algorithm that much, but to ensure\n          the highest accuracy from our training model we encourage\n          pictures to be taken directly above the paper.\n        </ons-list-item>\n      </ons-list>\n\n      <ons-list>\n        <ons-list-item>\n          <b> Bad Picture #3 </b>\n        </ons-list-item>\n\n        <img src = \"../../assets/BadImage3.jpg\">\n\n        <ons-list-item>\n          The red line from the margin is too close to the\n          answers. This can disrupt our program as it will interpret\n          this line as a stream of '1' characters\n        </ons-list-item>\n      </ons-list>\n    </ons-list>\n\n    <ons-list>\n      <ons-list-header>Links</ons-list-header>\n      <ons-list-item modifier=\"chevron\" tappable routerLink=\"/intro\">Take the Quiz!</ons-list-item>\n    </ons-list>\n  </div>\n</ons-page>\n"
 
 /***/ }),
 
@@ -605,7 +849,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Welcome to Writelet</div>\n  </ons-toolbar>\n  <div class=\"content\">\n    <ons-list>\n      <ons-list-header>About</ons-list-header>\n      <ons-list-item>Writlet is an application focused around teaching students how to best\n        retain information. Our inspiration for this project originates from flaws\n        we have found in the popular application 'Quizlet'</ons-list-item>\n      <ons-list-item>\n        Please click the start button for a tutorial!\n      </ons-list-item>\n\n      <ons-list-item modifier=\"chevron\" tappable routerLink=\"/tutorial\">Start</ons-list-item>\n    </ons-list>\n  </div>\n</ons-page>\n"
+module.exports = "<ons-page>\n  <ons-toolbar>\n    <div class=\"center\">Welcome to Writelet</div>\n  </ons-toolbar>\n  <div class=\"content\">\n    <ons-list>\n      <ons-list-header>About</ons-list-header>\n      <ons-list-item>Writlet is an application focused around teaching students how to best\n        retain information. Our inspiration for this project originates from flaws\n        we have found in the popular application 'Quizlet'\n      </ons-list-item>\n\n      <ons-list>\n        <ons-list-item>\n          <ons-button routerLink = \"/tutorial\"> Want to review the tutorial? </ons-button>\n        </ons-list-item>\n\n        <ons-list-item>\n          <ons-button routerLink=\"/intro\"> Take the Quiz! </ons-button>\n        </ons-list-item>\n      </ons-list>\n    </ons-list>\n  </div>\n</ons-page>\n"
 
 /***/ }),
 
@@ -711,7 +955,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /nfs/events/hackathon100/writer/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /nfs/events/hackathon100/WebstormProjects/writer/src/main.ts */"./src/main.ts");
 
 
 /***/ })
