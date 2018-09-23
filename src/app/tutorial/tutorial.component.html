@@ -1,9 +1,96 @@
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis posuere enim, eget sodales lectus interdum
-  vitae. Nunc eu ligula sed orci pretium mattis. Aliquam condimentum dui in diam vehicula laoreet. Nam libero massa,
-  interdum fermentum dui pretium, dictum viverra leo. Morbi viverra tellus nec urna ultricies cursus. Aliquam eleifend
-  molestie metus sed lacinia. Donec condimentum venenatis ullamcorper. Nam nec accumsan dolor, sit amet faucibus est.
-  Aenean lorem ipsum, pulvinar non fermentum vel, elementum et tellus. Etiam at sapien ornare metus scelerisque
-  pharetra. Fusce scelerisque ac sem et rhoncus. Vivamus venenatis vestibulum tincidunt.
-</p>
+<ons-page>
+  <ons-toolbar>
+    <div class="center">Tutorial</div>
+  </ons-toolbar>
+  <div class="content">
+    <ons-list>
+      <ons-list-header>Instructions</ons-list-header>
+      <ons-list-item>
+        In order to help you fully understand the workings
+        of Writelet, please read this introductory Tutorial!
+      </ons-list-item>
+    </ons-list>
+
+    <ons-list>
+      <ons-list-header> Common Mistakes </ons-list-header>
+      <ons-list>
+        <ons-list-item>
+          Here's an image with a couple of mistakes. The errors
+          are listed with their corresponding number:
+        </ons-list-item>
+
+        <ons-list-item>
+          1) The space between the '1)' symbol and word is too large.
+        </ons-list-item>
+
+        <ons-list-item>
+        2) This answer completely fine.
+        </ons-list-item>
+
+        <ons-list-item>
+        3) The space between the word is too large.
+        Our grader may read it as two seperate words.
+        </ons-list-item>
+
+        <ons-list-item>
+        4) There is a '.' instead of a ')' symbol.
+        </ons-list-item>
+      </ons-list>
+    </ons-list>
+
+    <img src="../../assets/WriteletMistake1.png">
+
+    <ons-list>
+      <ons-list-header> Taking the Picture </ons-list-header>
+      <ons-list>
+        <ons-list-item>
+          <b> A Good Picture </b>
+        </ons-list-item>
+
+        <img src="../../assets/GoodImage.jpg">
+
+        <ons-list-item>
+          Notice how the image only has numbers with their
+          respective answers, and the lighting is relatively consistent.
+        </ons-list-item>
+      </ons-list>
+
+      <ons-list>
+        <ons-list-item>
+          <b> A Bad Picture </b>
+        </ons-list-item>
+
+        <img src = "../../assets/BadImage1.jpg">
+
+        <ons-list-item>
+          This picture contains a lot of useless information
+          such as the image of another paper, the table, and
+          some black space at the bottom. Pictures should be
+          clear and concise.
+        </ons-list-item>
+      </ons-list>
+
+      <ons-list>
+        <ons-list-item>
+          <b> Another Bad Picture </b>
+        </ons-list-item>
+
+        <img src = "../../assets/BadImage2.jpg">
+
+        <ons-list-item>
+          This picture is taken at a diagonal angle. This won't hinder
+          the Machine Learning algorithm that much, but to ensure
+          the highest accuracy from our training model we encourage
+          pictures to be taken directly above the paper.
+        </ons-list-item>
+      </ons-list>
+    </ons-list>
+
+    <ons-list>
+      <ons-list-header>Links</ons-list-header>
+      <ons-list-item modifier="chevron" tappable routerLink="/game">Let's take a picture!</ons-list-item>
+    </ons-list>
+  </div>
+</ons-page>
+
 <button routerLink="/game">Ok</button>
