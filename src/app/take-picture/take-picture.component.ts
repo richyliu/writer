@@ -60,8 +60,9 @@ export class TakePictureComponent implements OnInit {
 
         // google vision api request with base64 image
         this.imageRequestService.request(gray64).subscribe(data => {
+          const res = data.responses[0];
           // get the text from the json
-          const text = data.responses[0].fullTextAnnotation.text;
+          const text = res.fullTextAnnotation ? res.fullTextAnnotation.text : '';
           this.loading = false;
 
           // navigate to results with the text interpretation from google vision, pass current query along
